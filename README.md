@@ -16,43 +16,44 @@ Replace /path/to/nginx with the path to nginx on your server and <username> with
 ## Credits
 
 I learned nginx don't really see myself going back. Code in this package is adapted, and shamelessly stolen (with some original comments) from:
-+[Perusio's bleeding edge Drupal nginx config](https://github.com/perusio/drupal-with-nginx)
-+[yhager's nginx Boost compatible Drupal config](https://github.com/yhager/nginx_drupal)
-+assorted tutorials
+
++ [Perusio's bleeding edge Drupal nginx config](https://github.com/perusio/drupal-with-nginx)
++ [yhager's nginx Boost compatible Drupal config](https://github.com/yhager/nginx_drupal)
++ assorted tutorials
 
 ## Features
 While this configuration doesn't have everything in perusio's yet it is for a different setup using unix sockets. Adding virtual-host-specific features to the configuration is left as an exercise to the administrator.
 
-	1. php-fpm unix socket support for
-	
-	2. Drupal 7 using clean URLs
-	
-	3. Multiple virtual hosts in separate small easy to manage files
-	
-	4. Basic gzip caching option(s)
-	
-	5. One file to save IP addresses of Drupal administrators allowed to visit update.php and install.php
-	
-	6. Advanced Aggregation module support [Drupal.org:](http://drupal.org/project/advagg)
-	
-	7. An HTML5 template for 404 pages with an option to use Drupal instead
-	
-	8. HTTP Basic Authentication for folders; like in Apache
-	
-	9. Image hotlinking protection
-	
-	10. Decent video and audio mp4 streaming config
-	
-	11. Support for the [Filefield Nginx Progress](http://drupal.org/project/filefield_nginx_progress) module for the upload progress bar.
-	
-	12. Non-[expensive 404s](http://drupal.org/node/76824 "Expensive 404s issue")
-	
-	13. [Advanced Help](http://drupal.org/project/advanced_help) support.
-	
-	14. Security. Among other things, there is no ability to use any _pages_ other than index.php
-	
-	15. The Drupal specific headers like `X-Drupal-Cache` provided by [pressflow](https://github.com/pressflow/6) or the `X-Generator`
-	header that Drupal 7 has are both **hidden**.
+  1. php-fpm unix socket support for
+
+  2. Drupal 7 using clean URLs
+
+  3. Multiple virtual hosts in separate small easy to manage files
+
+  4. Basic gzip caching option(s)
+
+  5. One file to save IP addresses of Drupal administrators allowed to visit update.php and install.php
+
+  6. Advanced Aggregation module support [Drupal.org:](http://drupal.org/project/advagg)
+
+  7. An HTML5 template for 404 pages with an option to use Drupal instead
+
+  8. HTTP Basic Authentication for folders; like in Apache
+
+  9. Image hotlinking protection
+
+  10. Decent video and audio mp4 streaming config
+
+  11. Support for the [Filefield Nginx Progress](http://drupal.org/project/filefield_nginx_progress) module for the upload progress bar.
+
+  12. Non-[expensive 404s](http://drupal.org/node/76824 "Expensive 404s issue")
+  
+  13. [Advanced Help](http://drupal.org/project/advanced_help) support.
+
+  14. Security. Among other things, there is no ability to use any _pages_ other than index.php
+
+  15. The Drupal specific headers like `X-Drupal-Cache` provided by [pressflow](https://github.com/pressflow/6) or the `X-Generator`
+      header that Drupal 7 has are both **hidden**.
 
 ## Conclusion
 While this is a work in progress, I wanted to provide my nginx config to get feedback from ninjas so to keep improving. If I had this configuration as a starting point I probably wouldn't have read the documentation on the nginx website. Maybe you won't have to, though I still recommend it. Don't use their Drupal example config, but definitely read the docs.
