@@ -1,0 +1,5 @@
+# Ignores any customized site files:
+conf.d/*.conf
+!default.conf
+!example.com.conf
+!example_ssl.conf
