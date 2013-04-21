@@ -1,6 +1,6 @@
 location / {
 
-	# Uncomment to send 404 errors back to Drupal. Overridable by putting this directive in individual site .conf files.
+	# Uncomment with care to send 404 errors back to Drupal. Overridable by putting this directive in individual site .conf files.
     ## error_page 404 /index.php;
 
     location ^~ /system/files/ {
@@ -148,16 +148,16 @@ location / {
     location ~* ^(?:.+\.(?:htaccess|make|txt|engine|inc|info|install|module|profile|po|sh|.*sql|test|theme|tpl(?:\.php)?|xtmpl)|code-style\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig\.save)$ {
         return 404;
     }
-	
-	# Allow these files to certain IPs
-	location ~* ^/(index|update|install|test|authorize|xmlrpc).php$ {
-		fastcgi_pass   $php_socket;
-		
+
+	# Allow certain files to allowed IPs
+	location ~* ^/(update|install|test|authorize|xmlrpc).php$ {
 		# Here you can block by IP or HTTP basic auth
 		# auth_basic "Restricted Access"; # auth realm
 		# auth_basic_user_file .htpasswd-users; # htpasswd file
 		include ips_allowed.conf;
+		fastcgi_pass   $php_socket;
 		include fastcgi_private_files.conf;
+		try_files $uri =404;
 	}
 
     ## First we try the URI and relay to the /index.php?q=$uri&$args if not found.
@@ -184,9 +184,8 @@ location @drupal {
 }
 
 location @drupal-no-args {
-
     fastcgi_pass $php_socket;
-    include fastcgi_private_files.conf;
+    include fastcgi_params;
     ## FastCGI microcache.
     #include apps/drupal/microcache_fcgi.conf;
     ## FCGI microcache for authenticated users also.
